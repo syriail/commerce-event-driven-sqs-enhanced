@@ -83,9 +83,6 @@ services:
     container_name: eventor
     environment:
       - SPRING_PROFILES_ACTIVE=docker
-      - INVENTORY_SERVICE_BASE_URL=http://inventory:8080
-      - ORDER_SERVICE_BASE_URL=http://orders:8080
-      - PAYMENTS_SERVICE_BASE_URL=http://payments:8080
     build:
       context: ./eventor
       dockerfile: Dockerfile

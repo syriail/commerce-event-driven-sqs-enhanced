@@ -1,9 +1,6 @@
 package com.ghrer.commerce.payments.business
 
 import com.ghrer.commerce.payments.BaseIntegrationTest
-import com.ghrer.commerce.payments.controller.dto.Address
-import com.ghrer.commerce.payments.controller.dto.Item
-import com.ghrer.commerce.payments.controller.dto.ProcessPaymentRequest
 import com.ghrer.commerce.payments.event.adaptor.SqsEventPublisherAdaptor
 import com.ghrer.commerce.payments.event.model.OrderEvent
 import com.ghrer.commerce.payments.event.model.OrderPaymentFailedEvent

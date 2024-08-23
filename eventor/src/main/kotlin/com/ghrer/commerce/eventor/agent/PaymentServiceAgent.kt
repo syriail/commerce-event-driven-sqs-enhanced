@@ -8,29 +8,12 @@ import org.springframework.context.event.EventListener
 import org.springframework.stereotype.Service
 
 @Service
-class PaymentServiceAgent(
-    private val paymentService: PaymentService
-) {
+class PaymentServiceAgent() {
 
     val logger = KotlinLogging.logger { }
 
     @EventListener
     fun on(orderCreatedEvent: OrderCreatedEvent) {
         logger.info { "Process payment for order ${orderCreatedEvent.order.id}" }
-        runCatching {
-            paymentService.processPayment(
-                with(orderCreatedEvent.order) {
-                    ProcessPaymentRequest(
-                        orderId = id,
-                        customerId,
-                        customerAddress,
-                        totalPrice,
-                        items
-                    )
-                }
-            ).block()
-        }.onFailure {
-            logger.error(it) { "Error while processing OrderCreatedEvent ${orderCreatedEvent.order.id}" }
-        }
     }
 }

@@ -1,6 +1,5 @@
 package com.ghrer.commerce.payments.business
 
-import com.ghrer.commerce.payments.controller.dto.ProcessPaymentRequest
 import com.ghrer.commerce.payments.event.EventPublisher
 import com.ghrer.commerce.payments.event.model.OrderPaymentFailedEvent
 import com.ghrer.commerce.payments.event.model.OrderPaymentSuccessfulEvent

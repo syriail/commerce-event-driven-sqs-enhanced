@@ -1,4 +1,4 @@
-package com.ghrer.commerce.payments.controller.dto
+package com.ghrer.commerce.payments.business
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties
 import java.util.UUID

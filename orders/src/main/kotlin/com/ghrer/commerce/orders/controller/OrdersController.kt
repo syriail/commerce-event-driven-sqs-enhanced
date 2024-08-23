@@ -31,12 +31,4 @@ class OrdersController(
     fun createOrder(
         @Valid @RequestBody createOrderRequest: CreateOrderRequest
     ) = orderHandler.createOrder(createOrderRequest)
-
-    @PatchMapping("/status/payment/{orderId}")
-    @ResponseStatus(HttpStatus.ACCEPTED)
-    fun updateOrderPaymentStatus(
-        @PathVariable orderId: UUID,
-        @RequestParam status: OrderStatus,
-        @RequestParam(required = false) paymentId: String?
-    ) = orderHandler.updateOrderPaymentStatus(orderId, status, paymentId)
 }

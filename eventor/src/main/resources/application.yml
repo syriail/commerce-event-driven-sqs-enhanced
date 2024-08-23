@@ -2,18 +2,6 @@ spring:
   application:
     name: eventor
 
-inventory-service:
-  baseUrl: ${INVENTORY_SERVICE_BASE_URL}
-  commitReservedPath: /commit-reserved
-
-payments-service:
-  baseUrl: ${PAYMENTS_SERVICE_BASE_URL}
-  processPaymentPath: /process-payment
-
-orders-service:
-  baseUrl: ${ORDER_SERVICE_BASE_URL}
-  paymentStatusPath: /orders/status/payment
-
 aws-resources:
   commerceEventsQueueUrl: ${AWS_COMMERCE_EVENTS_QUEUE_URL}
 ---
@@ -40,14 +28,6 @@ spring:
 aws-resources:
   commerceEventsQueueUrl: "http://sqs.eu-central-1.localhost.localstack.cloud:4566/000000000000/commerce_events.fifo"
 
-inventory-service:
-  baseUrl: "inventory-service"
-
-payments-service:
-  baseUrl: "payments-service"
-
-orders-service:
-  baseUrl: orders-service
 ---
 spring:
   config:

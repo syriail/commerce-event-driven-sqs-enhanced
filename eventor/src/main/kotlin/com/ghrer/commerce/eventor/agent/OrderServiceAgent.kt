@@ -10,40 +10,17 @@ import org.springframework.context.event.EventListener
 import org.springframework.stereotype.Service
 
 @Service
-class OrderServiceAgent(
-    private val orderService: OrderService
-) {
+class OrderServiceAgent() {
 
     private val logger = KotlinLogging.logger { }
 
     @EventListener
     fun on(paymentSuccessfulEvent: OrderPaymentSuccessfulEvent) {
         logger.info { "Update order ${paymentSuccessfulEvent.orderId} with status ${OrderStatus.PAID}" }
-        runCatching {
-            orderService.updatePaymentStatus(
-                UpdateOrderPaymentStatusRequest(
-                    paymentSuccessfulEvent.orderId,
-                    OrderStatus.PAID,
-                    paymentSuccessfulEvent.paymentId.toString()
-                )
-            ).block()
-        }.onFailure {
-            logger.error(it) { "Failed to update order ${paymentSuccessfulEvent.orderId} with status ${OrderStatus.PAID}" }
-        }
     }
 
     @EventListener
     fun on(paymentFailedEvent: OrderPaymentFailedEvent) {
         logger.info { "Update order ${paymentFailedEvent.orderId} with status ${OrderStatus.PAYMENT_FAILED}" }
-        runCatching {
-            orderService.updatePaymentStatus(
-                UpdateOrderPaymentStatusRequest(
-                    paymentFailedEvent.orderId,
-                    OrderStatus.PAYMENT_FAILED
-                )
-            ).block()
-        }.onFailure {
-            logger.error(it) { "Failed to update order ${paymentFailedEvent.orderId} with status ${OrderStatus.PAID}" }
-        }
     }
 }

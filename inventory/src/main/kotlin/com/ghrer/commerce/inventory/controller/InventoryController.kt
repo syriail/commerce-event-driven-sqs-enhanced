@@ -21,12 +21,4 @@ class InventoryController(
     ): Mono<List<Item>> {
         return inventoryProcessor.reserve(items)
     }
-
-    @PostMapping("/commit-reserved")
-    @ResponseStatus(HttpStatus.OK)
-    fun commitReservedItems(
-        @RequestBody items: List<ReserveItemRequest>
-    ): Mono<List<Item>> {
-        return inventoryProcessor.commitReservedItems(items)
-    }
 }
