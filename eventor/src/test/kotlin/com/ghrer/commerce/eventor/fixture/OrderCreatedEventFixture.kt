@@ -1,10 +1,10 @@
 package com.ghrer.commerce.eventor.fixture
 
+import com.ghrer.commerce.eventor.event.model.Address
+import com.ghrer.commerce.eventor.event.model.Item
+import com.ghrer.commerce.eventor.event.model.Order
 import com.ghrer.commerce.eventor.event.model.OrderCreatedEvent
-import com.ghrer.commerce.eventor.model.Address
-import com.ghrer.commerce.eventor.model.Item
-import com.ghrer.commerce.eventor.model.Order
-import com.ghrer.commerce.eventor.model.OrderStatus
+import com.ghrer.commerce.eventor.event.model.OrderStatus
 import java.time.LocalDateTime
 import java.util.UUID
 

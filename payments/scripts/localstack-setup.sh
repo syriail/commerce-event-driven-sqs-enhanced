@@ -12,5 +12,6 @@ echo "Localstack is ready"
 echo "Creating SQS"
 
 aws sqs create-queue --endpoint-url=http://localstack:4566 --queue-name commerce_events.fifo --attributes "FifoQueue=true,ContentBasedDeduplication=true"
+aws sqs create-queue --endpoint-url=http://localstack:4566 --queue-name payment_service_events.fifo --attributes "FifoQueue=true,ContentBasedDeduplication=true"
 
 echo "SQS has been created"

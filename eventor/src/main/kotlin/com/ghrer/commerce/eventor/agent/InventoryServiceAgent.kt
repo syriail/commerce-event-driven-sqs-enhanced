@@ -1,16 +1,16 @@
 package com.ghrer.commerce.eventor.agent
 
-import com.ghrer.commerce.eventor.agent.service.port.InventoryService
+import com.ghrer.commerce.eventor.agent.adaptor.InventoryServiceSqsSender
 import com.ghrer.commerce.eventor.event.model.OrderCreatedEvent
-import mu.KotlinLogging
 import org.springframework.context.event.EventListener
 import org.springframework.stereotype.Service
 
 @Service
-class InventoryServiceAgent() {
-    val logger = KotlinLogging.logger { }
+class InventoryServiceAgent(
+    private val inventoryServiceSqsSender: InventoryServiceSqsSender
+) {
     @EventListener
     fun on(orderCreatedEvent: OrderCreatedEvent) {
-        logger.info { "Commit reserved items for order ${orderCreatedEvent.order.id}" }
+        inventoryServiceSqsSender.send(orderCreatedEvent)
     }
 }

@@ -42,7 +42,7 @@ tasks.bootJar {
 dependencies {
     kapt(platform(SpringBootPlugin.BOM_COORDINATES))
     kapt("org.springframework.boot:spring-boot-configuration-processor")
-// 	implementation(platform("io.awspring.cloud:spring-cloud-aws-dependencies:3.1.1"))
+    implementation(platform("io.awspring.cloud:spring-cloud-aws-dependencies:3.1.1"))
     implementation(kotlin("reflect"))
 
 //    Spring
@@ -54,12 +54,9 @@ dependencies {
 //    Logging
     implementation("io.github.microutils:kotlin-logging:2.1.23")
 
-//  Typing
-// 	implementation("io.hypersistence:hypersistence-utils-hibernate-62:3.8.0")
-
 //    AWS
-// 	implementation("io.awspring.cloud:spring-cloud-aws-starter")
-// 	implementation("io.awspring.cloud:spring-cloud-aws-starter-sqs")
+    implementation("io.awspring.cloud:spring-cloud-aws-starter")
+    implementation("io.awspring.cloud:spring-cloud-aws-starter-sqs")
 
 //    Test
     testImplementation("org.springframework.boot:spring-boot-starter-test")

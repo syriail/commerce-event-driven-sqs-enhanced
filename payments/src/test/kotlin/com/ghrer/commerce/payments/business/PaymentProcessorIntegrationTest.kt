@@ -2,7 +2,7 @@ package com.ghrer.commerce.payments.business
 
 import com.ghrer.commerce.payments.BaseIntegrationTest
 import com.ghrer.commerce.payments.event.adaptor.SqsEventPublisherAdaptor
-import com.ghrer.commerce.payments.event.model.OrderEvent
+import com.ghrer.commerce.payments.event.model.CommerceEvent
 import com.ghrer.commerce.payments.event.model.OrderPaymentFailedEvent
 import com.ghrer.commerce.payments.event.model.OrderPaymentSuccessfulEvent
 import io.awspring.cloud.sqs.operations.SqsTemplate
@@ -27,7 +27,7 @@ class PaymentProcessorIntegrationTest : BaseIntegrationTest() {
     fun `should publish OrderPaymentSuccessfulEvent when customerId does not contain decline`() {
         val request = getSampleProcessPaymentRequest(false)
         paymentProcessor.processPayment(request)
-        val message = sqsTemplate.receive(queueUrl, OrderEvent::class.java).get()
+        val message = sqsTemplate.receive(queueUrl, CommerceEvent::class.java).get()
 
         Assertions.assertThat(message).isNotNull
         message.let {
@@ -45,7 +45,7 @@ class PaymentProcessorIntegrationTest : BaseIntegrationTest() {
     fun `should publish OrderPaymentFailedEvent when customerId contains decline`() {
         val request = getSampleProcessPaymentRequest(true)
         paymentProcessor.processPayment(request)
-        val message = sqsTemplate.receive(queueUrl, OrderEvent::class.java).get()
+        val message = sqsTemplate.receive(queueUrl, CommerceEvent::class.java).get()
 
         Assertions.assertThat(message).isNotNull
         message.let {

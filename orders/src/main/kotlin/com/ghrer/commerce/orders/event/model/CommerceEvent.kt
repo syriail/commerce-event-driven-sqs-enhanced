@@ -1,7 +1,8 @@
-package com.ghrer.commerce.eventor.event.model
+package com.ghrer.commerce.orders.event.model
 
 import com.fasterxml.jackson.annotation.JsonSubTypes
 import com.fasterxml.jackson.annotation.JsonTypeInfo
+import java.time.Instant
 
 enum class OrderEventType {
     ORDER_CREATED,
@@ -14,6 +15,9 @@ enum class OrderEventType {
     JsonSubTypes.Type(value = OrderPaymentSuccessfulEvent::class, name = "ORDER_PAYMENT_SUCCESSFUL"),
     JsonSubTypes.Type(value = OrderPaymentFailedEvent::class, name = "ORDER_PAYMENT_FAILED"),
 )
-interface OrderEvent {
-    val eventType: OrderEventType
+abstract class CommerceEvent(
+    open val eventType: OrderEventType,
+    val timestamp: Instant = Instant.now(),
+) {
+    abstract val eventGroupId: String
 }

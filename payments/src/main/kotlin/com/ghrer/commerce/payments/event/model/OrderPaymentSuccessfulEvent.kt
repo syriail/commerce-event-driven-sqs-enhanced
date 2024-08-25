@@ -6,7 +6,7 @@ data class OrderPaymentSuccessfulEvent(
     override val eventType: OrderEventType = OrderEventType.ORDER_PAYMENT_SUCCESSFUL,
     val orderId: UUID,
     val paymentId: UUID,
-) : OrderEvent {
+) : CommerceEvent(eventType) {
     override val eventGroupId: String
         get() = orderId.toString()
 }

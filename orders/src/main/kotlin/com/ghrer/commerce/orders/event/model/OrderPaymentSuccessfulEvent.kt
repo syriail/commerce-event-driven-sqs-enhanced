@@ -1,0 +1,12 @@
+package com.ghrer.commerce.orders.event.model
+
+import java.util.UUID
+
+data class OrderPaymentSuccessfulEvent(
+    override val eventType: OrderEventType = OrderEventType.ORDER_PAYMENT_SUCCESSFUL,
+    val orderId: UUID,
+    val paymentId: UUID,
+) : CommerceEvent(eventType) {
+    override val eventGroupId: String
+        get() = orderId.toString()
+}

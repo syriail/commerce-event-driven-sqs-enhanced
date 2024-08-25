@@ -23,6 +23,7 @@ spring:
 
 aws-resources:
   commerceEventsQueueUrl: ${AWS_COMMERCE_EVENTS_QUEUE_URL}
+  orderServiceEventsQueueUrl: ${AWS_ORDERS_SERVICE_EVENTS_QUEUE_URL}
 
 
 ---
@@ -54,6 +55,7 @@ spring:
 
 aws-resources:
   commerceEventsQueueUrl: "http://sqs.eu-central-1.localhost.localstack.cloud:4566/000000000000/commerce_events.fifo"
+  orderServiceEventsQueueUrl: "http://sqs.eu-central-1.localhost.localstack.cloud:4566/000000000000/orders_service_events.fifo"
 
 ---
 spring:
@@ -65,3 +67,4 @@ spring:
       endpoint: "http://localstack:4566"
 aws-resources:
   commerceEventsQueueUrl: "http://sqs.eu-central-1.localhost.localstack.cloud:4566/000000000000/commerce_events.fifo"
+  orderServiceEventsQueueUrl: "http://sqs.eu-central-1.localhost.localstack.cloud:4566/000000000000/orders_service_events.fifo"

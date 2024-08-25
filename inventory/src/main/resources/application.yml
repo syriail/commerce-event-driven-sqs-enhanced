@@ -21,6 +21,22 @@ spring:
     user: ${spring.db.username}
     password: ${spring.db.password}
 
+aws-resources:
+  inventoryServiceEventsQueueUrl: ${AWS_INVENTORY_SERVICE_EVENTS_QUEUE_URL}
+
+---
+spring:
+  config:
+    activate:
+      on-profile: ["test", "local", "docker"]
+  cloud:
+    aws:
+      region:
+        static: "eu-central-1"
+      credentials:
+        access-key: "local_access_key"
+        secret-key: "local_secret_key"
+
 ---
 spring:
   config:
@@ -30,3 +46,21 @@ spring:
     host: "localhost"
     username: "postgres"
     password: "password"
+
+  cloud:
+    aws:
+      endpoint: "http://localhost:4566"
+
+aws-resources:
+  inventoryServiceEventsQueueUrl: "http://sqs.eu-central-1.localhost.localstack.cloud:4566/000000000000/inventory_service_events.fifo"
+
+---
+spring:
+  config:
+    activate:
+      on-profile: ["docker"]
+  cloud:
+    aws:
+      endpoint: "http://localstack:4566"
+aws-resources:
+  inventoryServiceEventsQueueUrl: "http://sqs.eu-central-1.localhost.localstack.cloud:4566/000000000000/inventory_service_events.fifo"

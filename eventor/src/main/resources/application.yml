@@ -4,11 +4,14 @@ spring:
 
 aws-resources:
   commerceEventsQueueUrl: ${AWS_COMMERCE_EVENTS_QUEUE_URL}
+  inventoryServiceEventsQueueUrl: ${AWS_INVENTORY_SERVICE_EVENTS_QUEUE_URL}
+  paymentServiceEventsQueueUrl: ${AWS_PAYMENTS_SERVICE_EVENTS_QUEUE_URL}
+  orderServiceEventsQueueUrl: ${AWS_ORDERS_SERVICE_EVENTS_QUEUE_URL}
 ---
 Spring:
   config:
     activate:
-      on-profile: ["test", "local", "docker"]
+      on-profile: ["test", "docker"]
 
   cloud:
     aws:
@@ -21,12 +24,15 @@ Spring:
 spring:
   config:
     activate:
-      on-profile: ["test", "local"]
+      on-profile: ["test"]
   cloud:
     aws:
       endpoint: "http://localhost:4566"
 aws-resources:
   commerceEventsQueueUrl: "http://sqs.eu-central-1.localhost.localstack.cloud:4566/000000000000/commerce_events.fifo"
+  inventoryServiceEventsQueueUrl: "http://sqs.eu-central-1.localhost.localstack.cloud:4566/000000000000/inventory_service_events.fifo"
+  paymentServiceEventsQueueUrl: "http://sqs.eu-central-1.localhost.localstack.cloud:4566/000000000000/payment_service_events.fifo"
+  orderServiceEventsQueueUrl: "http://sqs.eu-central-1.localhost.localstack.cloud:4566/000000000000/orders_service_events.fifo"
 
 ---
 spring:
@@ -38,3 +44,6 @@ spring:
       endpoint: "http://localstack:4566"
 aws-resources:
   commerceEventsQueueUrl: "http://sqs.eu-central-1.localhost.localstack.cloud:4566/000000000000/commerce_events.fifo"
+  inventoryServiceEventsQueueUrl: "http://sqs.eu-central-1.localhost.localstack.cloud:4566/000000000000/inventory_service_events.fifo"
+  paymentServiceEventsQueueUrl: "http://sqs.eu-central-1.localhost.localstack.cloud:4566/000000000000/payment_service_events.fifo"
+  orderServiceEventsQueueUrl: "http://sqs.eu-central-1.localhost.localstack.cloud:4566/000000000000/orders_service_events.fifo"

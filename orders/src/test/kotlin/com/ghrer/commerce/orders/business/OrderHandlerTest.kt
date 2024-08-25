@@ -1,8 +1,8 @@
 package com.ghrer.commerce.orders.business
 
 import com.ghrer.commerce.orders.event.EventPublisher
+import com.ghrer.commerce.orders.event.model.CommerceEvent
 import com.ghrer.commerce.orders.event.model.OrderCreatedEvent
-import com.ghrer.commerce.orders.event.model.OrderEvent
 import com.ghrer.commerce.orders.exception.ApplicationException
 import com.ghrer.commerce.orders.fixture.OrderFixture
 import com.ghrer.commerce.orders.persistence.OrderPersistenceService
@@ -28,7 +28,7 @@ class OrderHandlerTest(
 ) {
 
     @Captor
-    private lateinit var eventCaptor: ArgumentCaptor<OrderEvent>
+    private lateinit var eventCaptor: ArgumentCaptor<CommerceEvent>
 
     @InjectMocks
     private lateinit var orderHandler: OrderHandler

@@ -1,7 +1,7 @@
 package com.ghrer.commerce.orders.event
 
-import com.ghrer.commerce.orders.event.model.OrderEvent
+import com.ghrer.commerce.orders.event.model.CommerceEvent
 
 interface EventPublisher {
-    fun publish(event: OrderEvent)
+    fun publish(event: CommerceEvent)
 }

@@ -1,7 +1,7 @@
 package com.ghrer.commerce.orders.event.adaptor
 
 import com.ghrer.commerce.orders.event.EventPublisher
-import com.ghrer.commerce.orders.event.model.OrderEvent
+import com.ghrer.commerce.orders.event.model.CommerceEvent
 import io.awspring.cloud.sqs.operations.SqsTemplate
 import org.springframework.beans.factory.annotation.Value
 import org.springframework.stereotype.Component
@@ -12,7 +12,7 @@ class SqsEventPublisherAdaptor(
     @Value("\${aws-resources.commerceEventsQueueUrl}")
     private val queueUrl: String,
 ) : EventPublisher {
-    override fun publish(event: OrderEvent) {
+    override fun publish(event: CommerceEvent) {
         sqsTemplate.send {
             it.queue(queueUrl)
             it.header(SQS_GROUP_ID_HEADER, event.eventGroupId)
