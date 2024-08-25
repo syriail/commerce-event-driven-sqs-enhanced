@@ -9,7 +9,6 @@ import org.springframework.stereotype.Service
 class PaymentServiceAgent(
     private val paymentServiceSqsSender: PaymentServiceSqsSender
 ) {
-
     @EventListener
     fun on(orderCreatedEvent: OrderCreatedEvent) {
         paymentServiceSqsSender.send(orderCreatedEvent)
